@@ -12,6 +12,8 @@ function campoMinato() {
     const btn = document.querySelector('button');
     btn.addEventListener('click', play);
 
+
+
     /**
      * Play -lancia il gioco
      */
@@ -53,7 +55,7 @@ function campoMinato() {
         const result = document.getElementById('playground');
         // impedisce che l'utente ripremendo invia ricrei più celle del limite
         result.innerHTML = ``;
-
+       
         //creo quadratini con la funzione e li stampo in html con i numeri sopra
         for (let i = 1; i <= Numsquare; i++) {
             let square = drawSquare(i, Numsquare);
@@ -79,7 +81,7 @@ function campoMinato() {
 
         //al click sul quadratino aggiunge classe active di css e stampa in console indice del quadratino cliccato
         square.addEventListener('click', drawClick);
-
+        gameOver = false;
         return square;
     }
 
@@ -106,7 +108,7 @@ function campoMinato() {
 
     function drawClick() {
         if (gameOver || this.classList.contains('active')) {
-            showBombs();
+           
             return;
         }
 
@@ -120,12 +122,7 @@ function campoMinato() {
                 this.style.color = "black";
                 this.innerHTML = 'bomba';
                 gameOver = true;
-                document.getElementById('message').textContent = 'Game Over!';
-                firstClick = true;
-                if (gameOver || this.classList.contains('active')) {
-                    showBombs();
-                    return;
-                }
+                showBombs();
 
             } else {
                 // Altrimenti, gestisci il gioco come al solito
