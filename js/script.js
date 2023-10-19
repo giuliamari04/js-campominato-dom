@@ -27,6 +27,7 @@ function campoMinato() {
         ris.classList.add('d-none');
         msg.classList.add('d-none');
 
+
        
         //let Numsquare;
         let Numsquare = selective(level);
@@ -126,11 +127,12 @@ function campoMinato() {
                 // Se è la prima bomba cliccata, mostrala
                 this.classList.add('bomb');
                 this.style.color = "black";
-                this.innerHTML = 'bomba';
+                this.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
                 gameOver = true;
                 score=0;
                 showBombs();
                 msg.classList.remove('d-none');
+                msg.classList.add('my-bg-white');
                 msg.textContent = 'Game Over!';
                 
 
@@ -138,7 +140,7 @@ function campoMinato() {
                 // Altrimenti, gestisci il gioco come al solito
                 this.classList.add('bomb');
                 this.style.color = "black";
-                this.innerHTML = 'bomba';
+                this.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
                 gameOver = true;
                 
             }
@@ -147,7 +149,7 @@ function campoMinato() {
             console.log(this.textContent);
             score++;
             ris.classList.remove('d-none');
-            ris.innerHTML = `il tuo punteggio: ${score}`;
+            ris.innerHTML = `<span>il tuo punteggio: ${score} </span>`;
         }
 
 
@@ -163,7 +165,7 @@ function campoMinato() {
             if (bombs.includes(squareNumber)) {
                 square.classList.add('bomb');
                 square.style.color = "black";
-                square.innerHTML = `bomba`;
+                square.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
             }
         });
     }
