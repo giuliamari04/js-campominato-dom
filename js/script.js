@@ -10,6 +10,8 @@ let bombs
 
 function campoMinato() {
     const btn = document.querySelector('button');
+    let ris = document.getElementById('score');
+    let msg = document.getElementById('message');
     btn.addEventListener('click', play);
 
 
@@ -22,7 +24,10 @@ function campoMinato() {
         //variabili bombe
 
         bombs = [];
+        ris.classList.add('d-none');
+        msg.classList.add('d-none');
 
+       
         //let Numsquare;
         let Numsquare = selective(level);
         console.log(level + ': ' + Numsquare);
@@ -55,6 +60,7 @@ function campoMinato() {
         const result = document.getElementById('playground');
         // impedisce che l'utente ripremendo invia ricrei più celle del limite
         result.innerHTML = ``;
+        
        
         //creo quadratini con la funzione e li stampo in html con i numeri sopra
         for (let i = 1; i <= Numsquare; i++) {
@@ -122,7 +128,11 @@ function campoMinato() {
                 this.style.color = "black";
                 this.innerHTML = 'bomba';
                 gameOver = true;
+                score=0;
                 showBombs();
+                msg.classList.remove('d-none');
+                msg.textContent = 'Game Over!';
+                
 
             } else {
                 // Altrimenti, gestisci il gioco come al solito
@@ -130,13 +140,14 @@ function campoMinato() {
                 this.style.color = "black";
                 this.innerHTML = 'bomba';
                 gameOver = true;
-                document.getElementById('message').textContent = 'Game Over!';
+                
             }
         } else {
             this.style.color = "black";
             console.log(this.textContent);
             score++;
-            document.getElementById('score').innerHTML = `il tuo punteggio: ${score}`;
+            ris.classList.remove('d-none');
+            ris.innerHTML = `il tuo punteggio: ${score}`;
         }
 
 

@@ -21,6 +21,7 @@ diifficoltà 2 ⇒ 81 caselle, con un numero compreso tra 1 e 81, divise in 9 ca
 Quando si clicca su una bomba e finisce la partita, evitare che si possa cliccare su altre celle. Evitare che si possa cliccare 2 volte sulla stessa cella
 Quando si clicca su una bomba e finisce la partita, il software scopre tutte le bombe nascoste.
 [OK]
+
 Consigli del giorno:** :
 Scriviamo prima cosa vogliamo fare passo passo in italiano, dividiamo il lavoro in micro problemi.
 Ad esempio:
