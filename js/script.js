@@ -5,11 +5,11 @@ let numero = 10;
 const numBoms = 16;
 let gameOver = false;
 let bombs
-    
+
 
 
 function campoMinato() {
-   const btn = document.querySelector('button');
+    const btn = document.querySelector('button');
     btn.addEventListener('click', play);
 
     /**
@@ -18,22 +18,11 @@ function campoMinato() {
     function play() {
         const level = document.getElementById('difficolta').value;
         //variabili bombe
-       
+
         bombs = [];
 
         //let Numsquare;
         let Numsquare = selective(level);
-        // switch (level) {
-        //     case 'medium':
-        //         Numsquare = 81;
-        //         break;
-        //     case 'difficult':
-        //         Numsquare = 49;
-        //         break;
-        //     default:
-        //         Numsquare = 100;
-        //         break;
-        // }
         console.log(level + ': ' + Numsquare);
 
         bombs = generateBombs(Numsquare);
@@ -89,30 +78,30 @@ function campoMinato() {
 
 
         //al click sul quadratino aggiunge classe active di css e stampa in console indice del quadratino cliccato
-        square.addEventListener('click', drawClick );
+        square.addEventListener('click', drawClick);
 
         return square;
     }
 
     function getRandomNumber(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
-    
-    function generateBombs(Numsquare){
-        const arrbombe =[];
+    }
+
+    function generateBombs(Numsquare) {
+        const arrbombe = [];
         while (arrbombe.length < numBoms) {
-    
-            let bomb = getRandomNumber(1,parseInt(Numsquare));
+
+            let bomb = getRandomNumber(1, parseInt(Numsquare));
             console.log(bomb);
-    
-            if(!arrbombe.includes(bomb)){
+
+            if (!arrbombe.includes(bomb)) {
                 arrbombe.push(bomb);
             }
         }
         console.log(arrbombe.length);
         return arrbombe;
     }
-    let score =0;
+    let score = 0;
     let firstClick = false;
 
     function drawClick() {
@@ -120,10 +109,10 @@ function campoMinato() {
             showBombs();
             return;
         }
-    
+
         this.classList.add('active');
         console.log(this.textContent);
-    
+
         if (bombs.includes(parseInt(this.textContent))) {
             if (!firstClick) {
                 // Se è la prima bomba cliccata, mostrala
@@ -153,11 +142,11 @@ function campoMinato() {
             document.getElementById('score').innerHTML = `il tuo punteggio: ${score}`;
         }
 
-        
+
     }
-    
-    
-    
+
+
+
 
     function showBombs() {
         const squares = document.querySelectorAll('.square');
@@ -170,5 +159,5 @@ function campoMinato() {
             }
         });
     }
-    
+
 }
