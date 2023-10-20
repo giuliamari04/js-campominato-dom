@@ -1,20 +1,19 @@
 // serve a far apparire un messaggio di errore in console log se non dichiariamo una variabile
 "use strict";
 campoMinato();
-let numero = 10;
-const numBoms = 16;
-let gameOver = false;
-let bombs
-
-
 
 function campoMinato() {
     const btn = document.querySelector('button');
     let ris = document.getElementById('score');
     let msg = document.getElementById('message');
+    const numBoms = 16;
+    let gameOver = false;
+    let bombs
+
+    let score = 0;
+    let firstClick = false;
+
     btn.addEventListener('click', play);
-
-
 
     /**
      * Play -lancia il gioco
@@ -22,53 +21,29 @@ function campoMinato() {
     function play() {
         const level = document.getElementById('difficolta').value;
         //variabili bombe
-
         bombs = [];
         ris.classList.add('d-none');
         msg.classList.add('d-none');
 
-
-       
-        //let Numsquare;
         let Numsquare = selective(level);
         console.log(level + ': ' + Numsquare);
 
         bombs = generateBombs(Numsquare);
-
-        // while (bombs.length < numBoms) {
-
-        //     let bomb = getRandomNumber(1,parseInt(Numsquare));
-        //     console.log(bomb);
-
-        //     let check = false;
-
-        //     // if(!boms.includes())
-        //     if(bombs.length >0){
-        //         for(let i=0;i<bombs.length;i++){
-        //             if(bombs[i] === bomb){
-        //                 check = true;
-        //             }
-        //         }
-        //     }
-        //     if(!check){
-        //         bombs.push(bomb);
-        //     }
-
-
-        // }
         console.log(bombs);
+
         //prendo griglia di gioco
         const result = document.getElementById('playground');
+
         // impedisce che l'utente ripremendo invia ricrei più celle del limite
         result.innerHTML = ``;
-        
-       
+
         //creo quadratini con la funzione e li stampo in html con i numeri sopra
         for (let i = 1; i <= Numsquare; i++) {
             let square = drawSquare(i, Numsquare);
             result.append(square);
         }
     }
+
 
     //la funzione prende l'indice dei quadrati e il numero di quadrati da scrivere
     //poi crea dei div
@@ -96,13 +71,12 @@ function campoMinato() {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
+    //crea array di bombe con numeri casuali
     function generateBombs(Numsquare) {
         const arrbombe = [];
         while (arrbombe.length < numBoms) {
-
             let bomb = getRandomNumber(1, parseInt(Numsquare));
             console.log(bomb);
-
             if (!arrbombe.includes(bomb)) {
                 arrbombe.push(bomb);
             }
@@ -110,12 +84,9 @@ function campoMinato() {
         console.log(arrbombe.length);
         return arrbombe;
     }
-    let score = 0;
-    let firstClick = false;
 
     function drawClick() {
         if (gameOver || this.classList.contains('active')) {
-           
             return;
         }
 
@@ -129,12 +100,12 @@ function campoMinato() {
                 this.style.color = "black";
                 this.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
                 gameOver = true;
-                score=0;
+                score = 0;
                 showBombs();
                 msg.classList.remove('d-none');
                 msg.classList.add('my-bg-white');
                 msg.textContent = 'Game Over!';
-                
+             
 
             } else {
                 // Altrimenti, gestisci il gioco come al solito
@@ -142,11 +113,9 @@ function campoMinato() {
                 this.style.color = "black";
                 this.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
                 gameOver = true;
-                
+
             }
         } else {
-            this.style.color = "black";
-            console.log(this.textContent);
             score++;
             ris.classList.remove('d-none');
             ris.innerHTML = `<span>il tuo punteggio: ${score} </span>`;
@@ -154,9 +123,6 @@ function campoMinato() {
 
 
     }
-
-
-
 
     function showBombs() {
         const squares = document.querySelectorAll('.square');
