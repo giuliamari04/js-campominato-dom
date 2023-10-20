@@ -101,7 +101,7 @@ function campoMinato() {
         if (bombs.includes(parseInt(this.textContent))) {
             this.classList.add('bomb');
             this.style.color = "black";
-            this.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
+            this.innerHTML = `<i class="fa-solid fa-bomb pulseBomb"></i>`;
             gameOver = true;
             score = 0;
             showBombs();
@@ -132,7 +132,7 @@ function campoMinato() {
             if (bombs.includes(squareNumber)) {
                 square.classList.add('bomb');
                 square.style.color = "black";
-                square.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
+                square.innerHTML = `<i class="fa-solid fa-bomb pulseBomb"></i>`;
             }
         });
     }

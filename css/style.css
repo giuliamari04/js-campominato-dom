@@ -28,7 +28,8 @@ button{
 }
 
 .square{
-    border: 3px solid white;
+    border: 3px solid rgb(8, 8, 8);
+    border-style:outset;
     /* width:calc(100% / 8);
     height:calc(100% / 8) ; */
     color: white;
@@ -44,7 +45,10 @@ button{
 }
 
 .bomb{
-    background-color: red;
+    background-color: rgb(173, 7, 7);
+    border-style:inset;
+    
+
 }
 #score{
     color: white;
@@ -85,4 +89,22 @@ button{
     0%{transform: translate(+200%);}
     100%{transform: translate(0%);}
 
+}
+
+@keyframes pulse {
+    0% {
+     transform: scale(1, 1);
+    }
+
+    50% {
+     transform: scale(1.4, 1.4);
+    }
+
+    100% {
+    transform: scale(1, 1);
+    }
+}
+
+.pulseBomb{
+    animation: pulse 1s linear infinite;
 }
