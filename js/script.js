@@ -9,7 +9,6 @@ function campoMinato() {
     const numBoms = 16;
     let bombs
     let gameOver;
-    
     let score;
 
     btn.addEventListener('click', play);
@@ -29,7 +28,6 @@ function campoMinato() {
 
         let Numsquare = selective(level);
         console.log(level + ': ' + Numsquare);
-
         bombs = generateBombs(Numsquare);
         console.log(bombs);
 
@@ -44,8 +42,14 @@ function campoMinato() {
             let square = drawSquare(i, Numsquare);
             result.append(square);
         }
+      
     }
 
+    function risfinal(numBoms){
+        const level = document.getElementById('difficolta').value;
+        let Numsquare = selective(level);
+        return Numsquare - numBoms;
+    }
 
     //la funzione prende l'indice dei quadrati e il numero di quadrati da scrivere
     //poi crea dei div
@@ -94,25 +98,29 @@ function campoMinato() {
 
         this.classList.add('active');
         console.log(this.textContent);
-
         if (bombs.includes(parseInt(this.textContent))) {
-           
-                // Se è la prima bomba cliccata, mostrala
-                this.classList.add('bomb');
-                this.style.color = "black";
-                this.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
-                gameOver = true;
-                score = 0;
-                showBombs();
-                msg.classList.remove('d-none');
-                msg.classList.add('my-bg-white');
-                msg.textContent = 'Game Over!';
+            this.classList.add('bomb');
+            this.style.color = "black";
+            this.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
+            gameOver = true;
+            score = 0;
+            showBombs();
+            msg.classList.remove('d-none');
+            msg.classList.add('my-bg-white');
+            msg.textContent = 'Game Over!';
 
-        } else {
+        } 
             score++;
             ris.classList.remove('d-none');
             ris.innerHTML = `<span>il tuo punteggio: ${score} </span>`;
-        }
+            if(score=== risfinal(numBoms)){
+                msg.classList.remove('d-none');
+                msg.classList.add('my-bg-white');
+                msg.textContent = 'Hai vinto!!!';
+                gameOver=true;
+                return;
+            }
+        
 
 
     }
