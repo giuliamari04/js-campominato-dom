@@ -9,9 +9,7 @@ function campoMinato() {
     const numBoms = 16;
     let gameOver = false;
     let bombs
-
     let score = 0;
-    let firstClick = false;
 
     btn.addEventListener('click', play);
 
@@ -94,7 +92,7 @@ function campoMinato() {
         console.log(this.textContent);
 
         if (bombs.includes(parseInt(this.textContent))) {
-            if (!firstClick) {
+           
                 // Se è la prima bomba cliccata, mostrala
                 this.classList.add('bomb');
                 this.style.color = "black";
@@ -105,16 +103,7 @@ function campoMinato() {
                 msg.classList.remove('d-none');
                 msg.classList.add('my-bg-white');
                 msg.textContent = 'Game Over!';
-             
 
-            } else {
-                // Altrimenti, gestisci il gioco come al solito
-                this.classList.add('bomb');
-                this.style.color = "black";
-                this.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
-                gameOver = true;
-
-            }
         } else {
             score++;
             ris.classList.remove('d-none');
