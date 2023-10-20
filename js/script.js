@@ -98,6 +98,8 @@ function campoMinato() {
 
         this.classList.add('active');
         console.log(this.textContent);
+        
+       
         if (bombs.includes(parseInt(this.textContent))) {
             this.classList.add('bomb');
             this.style.color = "black";
@@ -108,11 +110,14 @@ function campoMinato() {
             msg.classList.remove('d-none');
             msg.classList.add('my-bg-white');
             msg.textContent = 'Game Over!';
+            return;
 
         } 
-            score++;
-            ris.classList.remove('d-none');
-            ris.innerHTML = `<span>il tuo punteggio: ${score} </span>`;
+        score++; 
+        ris.classList.remove('d-none');
+        ris.innerHTML = `<span>il tuo punteggio: ${score} </span>`;
+       
+
             if(score=== risfinal(numBoms)){
                 msg.classList.remove('d-none');
                 msg.classList.add('my-bg-white');
