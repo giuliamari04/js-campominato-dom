@@ -7,9 +7,10 @@ function campoMinato() {
     let ris = document.getElementById('score');
     let msg = document.getElementById('message');
     const numBoms = 16;
-    let gameOver = false;
     let bombs
-    let score = 0;
+    let gameOver;
+    
+    let score;
 
     btn.addEventListener('click', play);
 
@@ -18,6 +19,9 @@ function campoMinato() {
      */
     function play() {
         const level = document.getElementById('difficolta').value;
+        gameOver = false;
+        score = 0;
+
         //variabili bombe
         bombs = [];
         ris.classList.add('d-none');
